@@ -3,7 +3,7 @@ Testapp::Application.routes.draw do
   
   resources :destinations 
   
-  root :to => "home#show"
+  root :to => "destinations#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

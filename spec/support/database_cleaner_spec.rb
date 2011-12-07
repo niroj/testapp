@@ -19,4 +19,4 @@ RSpec.configure do |config|
     Capybara.use_default_driver if example.metadata[:js]
     DatabaseCleaner.clean
   end
-end
+end    

@@ -15,7 +15,7 @@ describe "log_in" do
 
   end 
   
-  it "shouldnot allow invalid password" do
+  it "should not allow invalid password" do
     
     user = Factory(:user) 
     
@@ -41,7 +41,7 @@ describe "log_in" do
 
   end
   
-  it "should allow blank email" do
+  it "should not allow blank email" do
     
     user = Factory(:user) 
     
@@ -54,7 +54,7 @@ describe "log_in" do
 
   end 
   
-  it "should allow blank password" do
+  it "should not allow blank password" do
     
     user = Factory(:user) 
     
@@ -67,7 +67,7 @@ describe "log_in" do
 
   end 
   
-  it "should allow blank email and password" do
+  it "should not allow blank email and password" do
     
     user = Factory(:user) 
     

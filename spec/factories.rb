@@ -11,4 +11,10 @@ FactoryGirl.define do
     email
     password "anything"
   end
-end
+  
+  factory :destination do
+    place "jiri"
+    description "lovely place in eastern Nepal"
+  end
+end  
+

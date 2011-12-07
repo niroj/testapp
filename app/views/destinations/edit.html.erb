@@ -1,6 +1,14 @@
+<% if @destination.user == current_user %>
 <h1>Editing destination</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @destination %> |
-<%= link_to 'Back', destinations_path %>
+<%= link_to 'Back', destinations_path %> 
+       
+<%else%>
+
+<% flash[:alert] = "You Are not authorized to do this action" %>
+<% #redirect_to destinations_path %>
+                                            
+<% end %>

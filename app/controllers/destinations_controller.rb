@@ -1,8 +1,8 @@
 class DestinationsController < ApplicationController
   # GET /destinations
   # GET /destinations.json 
-  before_filter :authenticate_user!
-  
+  before_filter :authenticate_user!, :except => [:index, :show] 
+
   def index
     @destinations = Destination.all
 
@@ -36,13 +36,20 @@ class DestinationsController < ApplicationController
 
   # GET /destinations/1/edit
   def edit
-    @destination = Destination.find(params[:id])
+    @destination = Destination.find(params[:id])  
+
+    if @destination.user != current_user
+      redirect_to destinations_path 
+      flash[:alert] = "You Are not authorized to do this action"
+    end                            
+
   end
 
   # POST /destinations
   # POST /destinations.json
   def create
-    @destination = Destination.new(params[:destination])
+    @destination = current_user.destinations.new(params[:destination]) 
+
 
     respond_to do |format|
       if @destination.save
@@ -75,11 +82,15 @@ class DestinationsController < ApplicationController
   # DELETE /destinations/1.json
   def destroy
     @destination = Destination.find(params[:id])
-    @destination.destroy
-
-    respond_to do |format|
-      format.html { redirect_to destinations_url }
-      format.json { head :ok }
+    if @destination.user != current_user
+      redirect_to destinations_path 
+      flash[:alert] = "You Are not authorized to do this action"
+    else
+      @destination.destroy
+      respond_to do |format|
+        format.html { redirect_to destinations_url }
+        format.json { head :ok }
+      end
     end
   end
 end
