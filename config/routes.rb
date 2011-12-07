@@ -1,7 +1,9 @@
 Testapp::Application.routes.draw do
   devise_for :users
   
-  resources :destinations 
+  resources :destinations do
+    resources :reviews
+  end
   
   root :to => "destinations#index"
 
