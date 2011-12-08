@@ -22,19 +22,32 @@ describe "after signed in new destination" do
     fill_in "Password", :with => user.password
     click_button "Sign in"
   end
-
-
-  it "should not be blank" do
-
-    visit "destinations/new" 
+      
+  it {should have_valiid(:place).when("kathmandu,2044") }do
     
-    fill_in "Place", :with => ""
-    fill_in "Description", :with => ""
+        visit "destinations/new"    
+        
+        
+        fill_in "Place", :with => ""
+        fill_in "Description", :with => ""
+    
+        click_button "Create Destination" 
+        page.should have_content("Place can't be blank Description is too short (minimum is 10 characters)")     
 
-    click_button "Create Destination" 
-    page.should have_content("Place can't be blank Description is too short (minimum is 10 characters)")
+     end             
 
-  end
+  # it "should not be blank" do
+  # 
+  #     visit "destinations/new"    
+  #     
+  #     
+  #     fill_in "Place", :with => ""
+  #     fill_in "Description", :with => ""
+  # 
+  #     click_button "Create Destination" 
+  #     page.should have_content("Place can't be blank Description is too short (minimum is 10 characters)")     
+
+   #end
   
   it "place should not be blank" do
 

@@ -14,7 +14,8 @@ class ReviewsController < ApplicationController
       flash[:alert] = "You Are not allowed to add review in destinations you add"
     end
 
-  end
+  end    
+  
 
   private
 

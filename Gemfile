@@ -5,7 +5,7 @@ gem 'rails', '3.1.3'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3' 
+gem 'sqlite3'
 gem 'devise'
 
 gem 'json'
@@ -18,17 +18,24 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails' 
+gem 'jquery-rails'
 
 group :test, :development do
   gem 'rspec-rails'
-end   
+  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'pry'
+  gem 'pry-doc'
+end
 
 group :test do
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'valid_attribute'
+
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec'
 end
 
 # To use ActiveModel has_secure_password

@@ -22,7 +22,8 @@ describe "Registration" do
     fill_in "Password", :with => user.password 
     fill_in "Password confirmation", :with => user.password
     click_button "Sign up"
-
+                              
+    
     page.should have_content("Email has already been taken")
 
   end 

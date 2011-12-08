@@ -10,6 +10,9 @@ FactoryGirl.define do
   factory :user do
     email
     password "anything"
+  end     
+  
+  factory :user_destination do
   end
   
   factory :destination do
