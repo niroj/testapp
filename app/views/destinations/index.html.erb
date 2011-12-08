@@ -15,6 +15,7 @@
     <td><%= destination.description %></td>
     <td><%= link_to 'Show', destination %></td> 
 	<%if user_signed_in? %>
+	
     <td><%= link_to 'Edit', edit_destination_path(destination) %></td>
     <td><%= link_to 'Destroy', destination, confirm: 'Are you sure?', method: :delete %></td>
     <%end%>

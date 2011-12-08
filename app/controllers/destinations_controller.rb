@@ -16,6 +16,7 @@ class DestinationsController < ApplicationController
   # GET /destinations/1.json
   def show
     @destination = Destination.find(params[:id])
+    @reviews = @destination.reviews
 
     respond_to do |format|
       format.html # show.html.erb
