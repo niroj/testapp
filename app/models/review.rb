@@ -4,7 +4,7 @@ class Review < ActiveRecord::Base
 
   validates :content, :length => 10..240
 
-  after_save :notify_destination_owner
+#  after_save :notify_destination_owner
 
   private
 

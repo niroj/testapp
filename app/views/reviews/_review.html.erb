@@ -1,0 +1,7 @@
+<div id="reviews">
+    <%  @reviews.each do |review|   %>
+    <% user = User.find(review.user_id) %>
+    <p><b><%= user.email%></b> said</p>
+    <p><%=  review.content %></p>
+    <%  end %>
+</div>
