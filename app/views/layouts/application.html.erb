@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Testapp</title>
-	<%= stylesheet_link_tag    "application" %>
-	<%= javascript_include_tag "application" %>
-	<%= csrf_meta_tags %>
+    <title>Testapp</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
+    <div id="main_container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+        <div id="top_nav">
+        <% if user_signed_in? %>
 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-     	<div id="top_nav">
-		<% if user_signed_in? %>
-		
-			<p>logged in as: <%= current_user.email %> | <%= link_to "log out", destroy_user_session_path, :method => :delete %></p>
-		
-		<% else %>
-	         <p><%= link_to "log in", new_user_session_path %> | <%= link_to "Sign up", new_user_registration_path %></p>
-		<% end %>
-	</div>
-	<%= yield %>
+            <p>logged in as: <%= current_user.email %> | <%= link_to "log out", destroy_user_session_path, :method => :delete %></p>
+
+        <% else %>
+             <p><%= link_to "log in", new_user_session_path %> | <%= link_to "Sign up", new_user_registration_path %></p>
+        <% end %>
+    </div>
+    <%= yield %>
+    </div>
 
 </body>
 </html>

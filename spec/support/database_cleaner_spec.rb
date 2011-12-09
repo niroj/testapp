@@ -2,7 +2,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with :truncation
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do
@@ -19,4 +19,4 @@ RSpec.configure do |config|
     Capybara.use_default_driver if example.metadata[:js]
     DatabaseCleaner.clean
   end
-end    
+end

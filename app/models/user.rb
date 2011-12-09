@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  validates :email, :format => {:with => /^[a-zA-Z]+@[a-z]+.[a-z]+$/}
+#  validates :email, :format => {:with => /^[a-zA-Z]+@[a-z]+.[a-z]+$/}
 
   has_many :destinations
   has_many :reviews
