@@ -15,18 +15,14 @@
 
     <%= link_to 'Back', destinations_path %>
 
-    <div id="reviews">
-        <%  @reviews.each do |review|   %>
-        <% user = User.find(review.user_id) %>
-        <p><b><%= user.email%></b> said</p>
-        <p><%=  review.content %></p>
-        <%  end %>
+    <div id="review_container">
+        <%= render @reviews %>
     </div>
 
 
     <%if user_signed_in? && @destination.user_id != current_user.id%>
     <div id="review_form">
-        <%= form_for([@destination, Review.new]) do |f| %>
+        <%= form_for([@destination, Review.new], remote: true) do |f| %>
         <%= f.label "Write your review:"%><br />
         <%= f.text_area :content %><br />
         <%= f.submit %>
