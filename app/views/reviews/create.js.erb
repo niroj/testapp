@@ -1,1 +1,5 @@
-alert("working");
+<% if @review.save %>
+  $('#review_container').append(<%@review.content%>)
+<% else %>
+  alert("<%= @review.errors.full_messages %>")
+<% end %>

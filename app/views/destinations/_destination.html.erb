@@ -1,0 +1,8 @@
+<div id="destination">
+    <%  @destination.each do |dest|   %>
+    <% user = User.find(dest.user_id) %>
+    <p><b><%= user.email%></b> said</p>
+    <p><%=  dest.place %></p>
+    <p><% dest.description %></p>
+    <%  end %>
+</div>

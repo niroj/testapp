@@ -2,20 +2,21 @@
 
 <table>
   <tr>
+    <th>Photo</th>
     <th>Place</th>
     <th>Description</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @destinations.each do |destination| %>
   <tr>
+     <td><%= image_tag destination.photo.thumb.url %></td>
     <td><%= destination.place %></td>
     <td><%= destination.description %></td>
-    <td><%= link_to 'Show', destination %></td> 
-	<%if user_signed_in? %>
-	
+    <td><%= link_to 'Show', destination %></td>
+    <%if user_signed_in? %>
+
     <td><%= link_to 'Edit', edit_destination_path(destination) %></td>
     <td><%= link_to 'Destroy', destination, confirm: 'Are you sure?', method: :delete %></td>
     <%end%>
@@ -24,7 +25,7 @@
 </table>
 
 <br />
-         
+
 <%if user_signed_in? %>
 <%= link_to 'New Destination', new_destination_path %>
 <%end%>

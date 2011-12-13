@@ -2,8 +2,11 @@ class Destination < ActiveRecord::Base
 
   belongs_to :user
   has_many :reviews
+ # attr_accessible :title ,:description ,:photo
+ attr_accessor   :destination_x , :destination_y , :destination_w , :destination_h
 
-  validates :place, :presence => true, :format => {:with => /^([a-zA-Z]|\s)+$/}
-  validates :description, :length => 10..240
+
+
+  mount_uploader :photo, PhotoUploader
 
 end

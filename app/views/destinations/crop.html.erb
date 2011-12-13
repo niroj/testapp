@@ -1,0 +1,10 @@
+<h2>Crop the destination photo</h2>
+
+<%= image_tag @destination.photo_url(:large) ,:id => "cropbox" %>
+
+<%= form_for(@destination) do |f| %>
+    <% %w(x y w h).each do |attr|%>
+        <%= f.text_field "destination_#{attr}"%>
+     <% end %>
+    <%= f.submit "Crop it!"%>
+ <% end %>

@@ -20,7 +20,8 @@ class DestinationsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @destination }
+      #format.json { render json: @destination }
+      format.js
     end
   end
 
@@ -54,12 +55,17 @@ class DestinationsController < ApplicationController
 
     respond_to do |format|
       if @destination.save
-        format.html { redirect_to @destination, notice: 'Destination was successfully created.' }
+        if params[:destination][:photo].present?
+          render :template =>"destinations/crop"  and return
+
+        else
+        format.html { redirect_to destinations_path, notice: 'Destination was successfully created.' }
         format.json { render json: @destination, status: :created, location: @destination }
+       end
       else
         format.html { render action: "new" }
         format.json { render json: @destination.errors, status: :unprocessable_entity }
-
+        format.js
       end
     end
   end
@@ -71,8 +77,14 @@ class DestinationsController < ApplicationController
 
     respond_to do |format|
       if @destination.update_attributes(params[:destination])
-        format.html { redirect_to @destination, notice: 'Destination was successfully updated.' }
-        format.json { head :ok }
+         if params[:destination][:photo].present?
+            render :template =>"destinations/crop"  and return
+
+          else
+          format.html { redirect_to destinations_path, notice: 'Destination was successfully updated.' }
+          format.js { render json: @destination, status: :created, location: @destination }
+         end
+
       else
         format.html { render action: "edit" }
         format.json { render json: @destination.errors, status: :unprocessable_entity }
